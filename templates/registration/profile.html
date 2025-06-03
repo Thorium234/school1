@@ -1,0 +1,26 @@
+{% if user.is_authenticated %}
+    <p>
+        Hi!
+        {{ user.username }} <br>
+        Welcome to Thorium234 virtual library
+        
+    </p>
+
+    <br>
+    <p>
+        view students
+        <a href="{% url 'student_list' %}">here </a>
+        
+    </p>
+    <br>
+
+    <p>
+        view books
+        <a href="{% url 'Book_list' %}">here </a>
+        
+    </p>
+    <br>
+    <a href="{% url 'logout' %}">logout</a>
+{% else %}
+    <h4>you must be looged in </h4>
+{% endif %}    

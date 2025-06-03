@@ -1,0 +1,36 @@
+<p>
+    AddBook 
+    <a href="{% url 'Book_create' %}">here </a>
+    
+</p>
+{% if book %}
+    <table>
+        <thead>
+            <tr>
+                <th>TITLE</th>
+                <th>PUBLISHER</th>
+                <th>FIRST PUBLISHED</th>
+                <th>ISBN NUMBER</th>
+                <th>CATEGORY</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in book %}
+                <tr>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.publishers }}</td>
+                    <td>{{ i.first_publication }}</td>
+                    <td>{{ i.ISBN }}</td>
+                    <td>{{ i.category }}</td>
+                    <td>
+                        <a href="{% url 'Book_edit' i.id %}">Edit</a>
+                        <a href="{% url 'Book_delete' i.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h4>there is no any book yet added</h4>
+{% endif %}

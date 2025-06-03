@@ -1,0 +1,36 @@
+<p>
+    AddStudent 
+    <a href="{% url 'student_create' %}">here </a>
+    
+</p>
+{% if student %}
+    <table>
+        <thead>
+            <tr>
+                <th>FULL NAMES</th>
+                <th>ADMISION NUMBER</th>
+                <th>STREAM</th>
+                
+                
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in student %}
+                <tr>
+                    <td>{{ i.first_name }} {{ i.last_name }}</td>
+                    
+                    <td>{{ i.admision_number }}</td>
+                    <td>{{ i.stream }}</td>
+    
+                    <td>
+                        <a href="{% url 'student_edit' i.id %}">Edit</a>
+                        <a href="{% url 'student_delete' i.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h4>there is no any students yet added</h4>
+{% endif %}
